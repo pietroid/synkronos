@@ -7,17 +7,27 @@ uniform float time;
 
 void main (void) {
     vec3 c;
-	float l,z = time;
+	float t = time;
+    float l;
+
+    //position things
+    vec2 uv,p=gl_FragCoord.xy/canvasSize;
+    uv=p;
+    p-=.5;
+    p.x*=canvasSize.x/canvasSize.y;
+    l=length(p);
     
-	for(int i=0;i<3;i++) {
-		vec2 uv,p=gl_FragCoord.xy/canvasSize;
-		uv=p;
-		p-=.5;
-		p.x*=canvasSize.x/canvasSize.y;
-		z+=.07;
-		l=length(p);
-		uv+=p/l*(sin(z)+1.)*abs(sin(l*9.-z-z));
-		c[i]=.01/length(mod(uv,1.)-.5);
-	}
-	gl_FragColor=vec4(c/l,time);
+	//r
+    uv=p*0.5*t;
+    c[0]=.01/length(mod(uv,1.)-.5);
+	
+    //g
+    uv=p*0.5*(t+0.5);
+    c[1]=.01/length(mod(uv,1.)-.5);
+
+    //b
+    uv=p*0.5*(t+1.0);
+    c[2]=.01/length(mod(uv,1.)-.5);
+
+	gl_FragColor=vec4(c/l,1);
 }

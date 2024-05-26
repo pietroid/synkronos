@@ -1,6 +1,8 @@
 
 // this variable will hold our shader object
 let theShader;
+let t_mult = 1;
+let t =0;
 
 function preload(){
   // load the shader
@@ -14,8 +16,10 @@ function setup() {
 }
 
 function draw() {
+  t = t_mult * millis() / 1000.0;
+  t_mult += 1/t
   theShader.setUniform("canvasSize", [windowWidth, windowHeight]);
-  theShader.setUniform("time", millis() / 1000.0);
+  theShader.setUniform("time", t);
   // shader() sets the active shader with our shader
   shader(theShader);
 
