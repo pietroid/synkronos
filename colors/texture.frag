@@ -1,33 +1,22 @@
 #ifdef GL_ES
-precision mediump float;
+precision highp float;
 #endif
 
 uniform vec2 canvasSize;
 uniform float time;
+uniform vec3 color1;
+uniform vec3 color2;
+uniform vec3 color3;
+uniform vec3 color4;
 
 void main (void) {
-    vec3 c;
-	float t = time;
-    float l;
+    vec2 uv = gl_FragCoord.xy/canvasSize;
 
-    //position things
-    vec2 uv,p=gl_FragCoord.xy/canvasSize;
-    uv=p;
-    p-=.5;
-    p.x*=canvasSize.x/canvasSize.y;
-    l=length(p);
+    vec3 left = uv.y * color1 + (1.0 -uv.y) * color2;
+    vec3 right = uv.y * color3 + (1.0-uv.y) * color4;
     
-	//r
-    uv=p*0.5*t;
-    c[0]=.01/length(mod(uv,1.)-.5);
-	
-    //g
-    uv=p*0.5*(t+0.5);
-    c[1]=.01/length(mod(uv,1.)-.5);
+    //Horizontal Interpolation
+    vec3 horiz = uv.x * right + (1.0-uv.x) * left;
 
-    //b
-    uv=p*0.5*(t+1.0);
-    c[2]=.01/length(mod(uv,1.)-.5);
-
-	gl_FragColor=vec4(c/l,1);
+	gl_FragColor=vec4(horiz, 1);
 }
