@@ -20,7 +20,7 @@ let period3;
 let period4;
 
 let k = 0.001;
-let f = 0.004;
+let f = 0.05;
 
 let t = 0;
 
