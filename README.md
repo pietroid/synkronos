@@ -1,8 +1,8 @@
 # Synkronos
 
-Experimenting with generative art. The main goal of this experimentation project is to mix organic with artificial, digital with human.
+Experimenting with generative art. The main goal of this experimentation project is to mix organic with artificial, digital with human, art and technology. 
 
-List of experiments
+# Experiments (WIP)
 
 ## Stars
 
@@ -14,4 +14,5 @@ List of experiments
 
 ## Fractal lattice
 
-![Uploading gif333.gif…]()
+
+![gif333](https://github.com/pietroid/synkronos/assets/22605271/978a7b6b-e61f-4cc8-b7d5-ddf0d55491fe)
